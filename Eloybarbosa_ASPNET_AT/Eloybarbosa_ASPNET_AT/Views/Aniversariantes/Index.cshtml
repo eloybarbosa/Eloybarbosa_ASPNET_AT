@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
     <div class="container">
-        <h1 class="display-4 text-center">Aniversariantes Cadastrados</h1>
+
 
         <p>
             <a class="btn btn-lg btn-dark btn-block" asp-area="" asp-controller="Aniversariantes" asp-action="Create">Cadastrar</a>
@@ -12,17 +12,18 @@
         <p>
             <a class="btn btn-lg btn-danger btn-block" asp-area="" asp-controller="Aniversariantes" asp-action="AniversarianteDia">Aniversariantes do Dia</a>
         </p>
-
+        <br />
+        <h1 class="display-4 text-center">Buscar Aniversariantes</h1>
         <form asp-controller="Aniversariantes" asp-action="Search" method="get">
             <div class="form-group">
-                <label class="control-label">Pesquisar Pessoa:</label>
-                <input class="form-control" name="query" id="query" />
+                <input class="form-control" name="query" id="query" placeholder="Pesquisar..." />
             </div>
             <div class="form-group">
-                <input type="submit" value="Pesquisar" class="btn btn-primary" />
+                <input type="submit" value="Pesquisar" class="btn btn-dark" />
             </div>
         </form>
-
+        <br />
+        <h1 class="display-4 text-center">Aniversariantes Cadastrados</h1>
 
         <table class="table">
             <thead>

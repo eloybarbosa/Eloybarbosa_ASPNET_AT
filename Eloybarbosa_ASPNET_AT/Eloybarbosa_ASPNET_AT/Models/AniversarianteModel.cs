@@ -16,19 +16,6 @@ namespace Eloybarbosa_ASPNET_AT.Models
         public DateTime Nascimento { get; set; }
 
 
-        public int CalculoProximoAniversario()
-        {
-            DateTime today = DateTime.Today;
-            DateTime niver = new DateTime(today.Year, Nascimento.Month, Nascimento.Day);
-
-            if (niver < today)
-            {
-                niver = niver.AddYears(1);
-            }
-
-            int diasRestantes = (niver - today).Days;
-            return diasRestantes;
-        }
     }
 
     
