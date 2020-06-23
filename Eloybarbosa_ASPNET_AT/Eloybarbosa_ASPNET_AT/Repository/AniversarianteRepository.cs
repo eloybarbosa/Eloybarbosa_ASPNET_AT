@@ -171,17 +171,38 @@ namespace Eloybarbosa_ASPNET_AT.Repository
                 string sql = @"
                                 SELECT ID, NOME, SOBRENOME, DATANASCIMENTO
                                 FROM ANIVERSARIANTE
-                                WHERE ID (NOME LIKE '%' + @P1 + '%' OR SOBRENOME LIKE '%' + @P2 + '%')
+                                WHERE (NOME LIKE '%' + @P1 + '%' OR SOBRENOME LIKE '%' + @P2 + '%')
                                 ORDER BY DATANASCIMENTO ASC";
 
-                result = connection.Query<Aniversariante>(sql, new { P1 = query, P2 = query }).ToList();
+                var command = connection.CreateCommand();
+                command.CommandText = sql;
+                command.Parameters.AddWithValue("P1", query);
+                command.Parameters.AddWithValue("P2", query);
+                command.CommandType = System.Data.CommandType.Text;
 
+                connection.Open();
+
+                SqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    result.Add(new Aniversariante()
+                    {
+                        Id = dr.GetInt32("ID"),
+                        Nome = dr.GetString("NOME"),
+                        Sobrenome = dr.GetString("SOBRENOME"),
+                        Nascimento = dr.GetDateTime("DATANASCIMENTO")
+                    });
+                }
+
+                //result = connection.Query<Aniversariante>(sql, new { P1 = query, P2 = query }).ToList();
+                connection.Close();
             }
 
             return result;
+
         }
-
-
+            
     }
 }
 
