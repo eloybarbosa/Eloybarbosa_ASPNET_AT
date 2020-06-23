@@ -1,0 +1,44 @@
+﻿@model Eloybarbosa_ASPNET_AT.Models.Aniversariante
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+    <div class="container">
+        <h1 class="display-4">Apagar Aniversariante</h1>
+        <h3 class="lead">Tem certesa que deseja apagar os dados de  @Html.DisplayFor(model => model.Nome)</h3>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Sobrenome)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Sobrenome)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nascimento)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Nascimento)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="submit" value="Apagar" class="btn btn-danger" /> |
+                    <a class="btn btn-dark" asp-action="Index">Lista de aniversariantes</a>
+                </form>
+            </div>
+</div>
